@@ -32,5 +32,11 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+     <types> 
+        <members>CollaborationGroup</members> 
+        <members>CollaborationGroupMember</members> 
+        <members>*</members> 
+        <name>CustomObject</name> 
+    </types> 
     <version>55.0</version>
 </Package>

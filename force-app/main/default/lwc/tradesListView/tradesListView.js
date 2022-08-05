@@ -1,4 +1,4 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 import FIELD_LABEL_SELL_CCY from "@salesforce/label/c.FieldLabel_SellCCY";
@@ -76,7 +76,7 @@ const columns = [
     {
      label: FIELD_LABEL_DATE_BOOKED,
      fieldName: "Date_Booked__c",
-     type: "date-locale",
+     type: "date",
      typeAttributes:{ 
         day: "2-digit",
         month: "2-digit",
@@ -92,6 +92,7 @@ const columns = [
 export default class TradesListView extends LightningElement {
     columns = columns;
     newTradeOpened = false;
+    trades;
 
     sellCurrency;
     buyCurrency;
@@ -99,7 +100,7 @@ export default class TradesListView extends LightningElement {
     buyAmount;
 
     currencies;
-    calcullatedRate = 0;
+    calcullatedRate;
 
     label = {
         FIELD_LABEL_SELL_CCY,
@@ -113,11 +114,20 @@ export default class TradesListView extends LightningElement {
         FIELD_LABEL_BOOKED_TRADES
     };
     
-    @wire(getTradesList)
-    trades;
-    
     connectedCallback(){
-        this.getCurrencies();
+      this.loadTrades();
+      this.getCurrencies();
+    }
+
+    //Get list od trades from database
+    loadTrades(){
+      getTradesList()
+            .then(result=>{
+                this.trades = result;
+            })
+            .catch(error=>{
+                this.errors = error;
+            });
     }
 
     openNewTradeForm(){
@@ -141,6 +151,7 @@ export default class TradesListView extends LightningElement {
         }
     }
 
+    //method for new trade creation
     handleTradeCreation() {
         createTrade({
             sellAmount : this.sellAmount,
@@ -150,6 +161,9 @@ export default class TradesListView extends LightningElement {
             rate : this.calcullatedRate
         })
           .then(() => {  
+            this.loadTrades();          
+          })
+          .then(() => {  
             this.dispatchEvent(
               new ShowToastEvent ({
                 type: "success",
@@ -158,9 +172,9 @@ export default class TradesListView extends LightningElement {
                 variant: "success",               
               })
             );
-            this.closeTradeForm();
+            
           })
-          .catch((error) => {
+          .catch(() => {
             this.dispatchEvent(
                 new ShowToastEvent ({
                   type: "error",
@@ -170,9 +184,12 @@ export default class TradesListView extends LightningElement {
                 })
               );
           })
-          .finally(() => {});
+          .finally(() => {
+            this.newTradeOpened = false;
+          });
       }
     
+    //get Rate and buy amount for selected currencies and sell amount  
     executeFixerRequest(){
         let endpoint = "https://api.apilayer.com/fixer/convert?to="
                         + this.buyCurrency
@@ -185,13 +202,13 @@ export default class TradesListView extends LightningElement {
                 this.calcullatedRate = response.info.rate;
                 this.buyAmount = response.result;
             }
-            console.log(result);
         })
         .catch(error => {
-            console.log(error);
+            console.error(error);
         })    
     }
 
+    //get list of symbols from fixer.io
     getCurrencies(){
         executeRequest({endpoint : 'https://api.apilayer.com/fixer/symbols', method : "GET"})
         .then(result => {
@@ -206,7 +223,7 @@ export default class TradesListView extends LightningElement {
             }
         })
         .catch(error => {
-            console.log(error);
+            console.error(error);
         })    
     }   
 }
