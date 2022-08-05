@@ -1,6 +1,6 @@
 public with sharing class TradesController {
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<Trade__c> getTradesList() {
         return [SELECT Id, Sell_Currency__c, Sell_Amount__c, Buy_Currency__c, Buy_Amount__c, Rate__c, Date_Booked__c FROM Trade__c LIMIT 50];
     }

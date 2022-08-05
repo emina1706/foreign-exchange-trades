@@ -4,7 +4,7 @@ global class FixerWebService {
     HttpRequest req = new HttpRequest();
     req.setEndpoint(endpoint);
     req.setMethod(method);
-    req.setHeader('apikey', 'YLf9r24jXDrcBZaSf9Md61YIqY7QMQYk');
+    req.setHeader('apikey', 'dykA6eG6DDh5JXYCSYSvmmiInXxE8mdu');
  
     Http http = new Http();
     HTTPResponse res = http.send(req);
