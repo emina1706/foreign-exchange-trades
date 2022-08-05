@@ -7,12 +7,7 @@
         <publicGroups>
             <publicGroup>Trade_Reviewers_Public_Group</publicGroup>
             <publicGroup>AllInternalUsers</publicGroup>
-        </publicGroups>
-        <users>
-            <user>integration@00d1x000000hdfyeas.com</user>
-            <user>insightssecurity@00d1x000000hdfyeas.com</user>
-            <user>test-ohvkpbpc7cww@example.com</user>
-        </users>
+        </publicGroups>      
     </queueMembers>
     <queueSobject>
         <sobjectType>Trade__c</sobjectType>
