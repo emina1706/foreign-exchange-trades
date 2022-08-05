@@ -1,18 +1,15 @@
-# Salesforce DX Project: Next Steps
+# Salesforce DX Project: Foreign Exchange traders
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+A Salesforce application that allows us to create and store foreign exchange trades and uses an extarnel service that has an information of the latest currency rates available.
 
-## How Do You Plan to Deploy Your Changes?
+## Configure your environment in order to test this Salesforce DX Project
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Follow the next steps in order to create a scratch org containing the app in your Salesforce enviroment:
 
-## Configure Your Salesforce DX Project
+1. Log into the org you’ve chosen as your Dev Hub;
+2. In Setup, enter Dev Hub in the Quick Find box and select Dev Hub -> Enable Div Hub;
+3. Create a new scratch org : sfdx force:org:create -f config/project-scratch-def.json -a NameOfScracthOrg;
+4. Set your default org : sfdx force:config:set defaultusername=test-scratchorgusername@example.com or choose SFDX: Set a Default Org from the command palette in VS Code (Ctrl/Cmd+Shift+P) to authorize a newly created scratch org;
+5. Use sfdx force:source:push command to push source to your org; 
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Where to find and How to use the app
