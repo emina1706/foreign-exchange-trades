@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!--  Button Labels  -->
+    <labels>
+        <fullName>ButtonLabel_Create</fullName>
+        <categories>ButtonLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button Label Create</shortDescription>
+        <value>Create</value>
+    </labels>
+    <labels>
+        <fullName>ButtonLabel_Cancel</fullName>
+        <categories>ButtonLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button Label Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ButtonLabel_NewTrade</fullName>
+        <categories>ButtonLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Button Label New Trade</shortDescription>
+        <value>New Trade</value>
+    </labels>
+    <labels>
+        <fullName>InfoLabel_NewTradeAdded</fullName>
+        <categories>InfoLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Info label new trade</shortDescription>
+        <value>You have successfully added a new trade!</value>
+    </labels>
+    <labels>
+        <fullName>InfoLabel_Error</fullName>
+        <categories>InfoLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Info label new trade</shortDescription>
+        <value>Some unexpected error occured!</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_SellCCY</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Sell CCY label</shortDescription>
+        <value>Sell CCY</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_BookedTrades</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table title Booked Trades</shortDescription>
+        <value>Booked Trades</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_SellAmount</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Sell Amount label</shortDescription>
+        <value>Sell Amount</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_BuyCCY</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Buy CCY label</shortDescription>
+        <value>Buy CCY</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_BuyAmount</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Buy Amount label</shortDescription>
+        <value>Buy Amount</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_Rate</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Rate label</shortDescription>
+        <value>Rate</value>
+    </labels>
+    <labels>
+        <fullName>FieldLabel_DateBooked</fullName>
+        <categories>FieldLabel</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Table column Date Booked label</shortDescription>
+        <value>Date Booked</value>
+    </labels>

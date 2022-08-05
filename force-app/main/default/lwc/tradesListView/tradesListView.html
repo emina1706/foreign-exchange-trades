@@ -1,0 +1,86 @@
+<template>
+    <template if:false={newTradeOpened}>
+    <lightning-card variant="narrow" title={label.FIELD_LABEL_BOOKED_TRADES}>
+        <lightning-layout horizontal-align="end">
+            <lightning-button 
+                label={label.BUTTON_LABEL_NEW_TRADE} 
+                onclick={openNewTradeForm}
+                class="slds-p-right_small">
+            </lightning-button>
+        </lightning-layout>
+ 
+        <lightning-layout class="slds-p-top_small slds-p-horizontal_small slds-p-bottom_large">
+            <lightning-datatable 
+                data={trades.data}
+                columns={columns}
+                key-field="id"
+                hide-checkbox-column="true"
+                class="slds-table_bordered slds-table_col-bordered"
+            ></lightning-datatable>
+        </lightning-layout>
+    </lightning-card>
+    </template>
+
+    <lightning-card if:true={newTradeOpened} title={label.BUTTON_LABEL_NEW_TRADE}>
+        <lightning-layout horizontal-align="spread" class="slds-p-horizontal_large">
+            <lightning-layout-item size="4">
+                <lightning-combobox
+                    name="sellCurrency"
+                    label={label.FIELD_LABEL_SELL_CCY}
+                    value={sellCurrency}
+                    placeholder="Select Currency"
+                    options={currencies}
+                    onchange={handleChange} >
+                </lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item>
+              {label.FIELD_LABEL_RATE} : {calcullatedRate}
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                <lightning-combobox
+                    name="buyCurrency"
+                    label={label.FIELD_LABEL_BUY_CCY}
+                    value={buyCurrency}
+                    placeholder="Select Currency"
+                    options={currencies}
+                    onchange={handleChange}>
+                </lightning-combobox>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+        <lightning-layout horizontal-align="spread" class="slds-p-horizontal_large slds-p-vertical_medium">
+            <lightning-layout-item size="4">
+                <lightning-input 
+                    name="sellAmount" 
+                    label={label.FIELD_LABEL_SELL_AMOUNT}
+                    value={sellAmount} 
+                    onchange={handleChange}>
+                </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="4">
+                <lightning-input 
+                label={label.FIELD_LABEL_BUY_AMOUNT}
+                disabled="true" 
+                value={buyAmount}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout horizontal-align="spread" class="slds-p-horizontal_large slds-p-vertical_medium">
+            <lightning-layout-item>
+                <lightning-button
+                    label={label.BUTTON_LABEL_CREATE}
+                    onclick={handleTradeCreation}>
+                </lightning-button>
+            </lightning-layout-item>
+  
+            <lightning-layout-item>
+                <lightning-button
+                    label={label.BUTTON_LABEL_CANCEL}
+                    onclick={closeTradeForm}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+  
+</template>

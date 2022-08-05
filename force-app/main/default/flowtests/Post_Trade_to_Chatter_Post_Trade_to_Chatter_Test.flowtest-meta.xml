@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Post_Trade_to_Chatter</flowApiName>
+    <label>Post Trade to Chatter Test</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Buy_Amount__c&quot;:&quot;200&quot;,&quot;Buy_Currency__c&quot;:&quot;BAM&quot;,&quot;Date_Booked__c&quot;:&quot;2022-08-11T14:07:00.000Z&quot;,&quot;OwnerId&quot;:&quot;0051x00000B06EMAAZ&quot;,&quot;Rate__c&quot;:&quot;0.3456&quot;,&quot;Sell_Amount__c&quot;:&quot;350.00&quot;,&quot;Sell_Currency__c&quot;:&quot;EUR&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Buy_Amount__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>200.0</numberValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>
