@@ -1,6 +1,6 @@
-# Salesforce DX Project: Foreign Exchange traders
+# Salesforce DX Project: Foreign Exchange Traders
 
-A Salesforce application that allows us to create and store foreign exchange trades and uses an extarnel service that has an information of the latest currency rates available.
+A Salesforce application that allows us to create and store foreign exchange trades and uses an external service that has an information of the latest currency rates available.
 
 ## Configure your environment in order to test this Salesforce DX Project
 
