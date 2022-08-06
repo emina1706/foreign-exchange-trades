@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Post_to_Chatter</name>
         <label>Post to Chatter</label>
-        <locationX>578</locationX>
-        <locationY>653</locationY>
+        <locationX>718</locationX>
+        <locationY>659</locationY>
         <actionName>chatterPost</actionName>
         <actionType>chatterPost</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,7 +17,29 @@
         <inputParameters>
             <name>subjectNameOrId</name>
             <value>
-                <elementReference>Get_Trade_Reviewers_Queue.Id</elementReference>
+                <elementReference>Get_Trade_Reviewers_Group.Id</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Post_to_newly_created_Chatter_Group</name>
+        <label>Post to newly created Chatter Group</label>
+        <locationX>454</locationX>
+        <locationY>812</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>Message_Body</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>Create_new_Chatter_Group</elementReference>
             </value>
         </inputParameters>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -26,14 +48,17 @@
     <decisions>
         <name>Is_there_a_Group</name>
         <label>Is there a Group</label>
-        <locationX>572</locationX>
+        <locationX>574</locationX>
         <locationY>529</locationY>
+        <defaultConnector>
+            <targetReference>Create_new_Chatter_Group</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Group_found</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Trade_Reviewers_Queue</leftValueReference>
+                <leftValueReference>Get_Trade_Reviewers_Group</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -72,10 +97,33 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_new_Chatter_Group</name>
+        <label>Create new Chatter Group</label>
+        <locationX>454</locationX>
+        <locationY>650</locationY>
+        <connector>
+            <targetReference>Post_to_newly_created_Chatter_Group</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CollaborationType</field>
+            <value>
+                <stringValue>Public</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <stringValue>Trade Reviewers</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CollaborationGroup</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
-        <name>Get_Trade_Reviewers_Queue</name>
-        <label>Get Trade Reviewers Queue</label>
-        <locationX>581</locationX>
+        <name>Get_Trade_Reviewers_Group</name>
+        <label>Get Trade Reviewers Group</label>
+        <locationX>583</locationX>
         <locationY>361</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -97,7 +145,7 @@
         <locationX>458</locationX>
         <locationY>48</locationY>
         <connector>
-            <targetReference>Get_Trade_Reviewers_Queue</targetReference>
+            <targetReference>Get_Trade_Reviewers_Group</targetReference>
         </connector>
         <object>Trade__c</object>
         <recordTriggerType>Create</recordTriggerType>

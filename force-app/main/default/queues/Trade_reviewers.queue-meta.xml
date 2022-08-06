@@ -7,7 +7,7 @@
         <publicGroups>
             <publicGroup>Trade_Reviewers_Public_Group</publicGroup>
             <publicGroup>AllInternalUsers</publicGroup>
-        </publicGroups>      
+        </publicGroups>
     </queueMembers>
     <queueSobject>
         <sobjectType>Trade__c</sobjectType>
